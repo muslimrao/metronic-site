@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             //\URL::forceScheme('https');
         }
 
-        \URL::forceScheme('https');
+        \URL::forceScheme('http');
 
         $domain_name = @$_SERVER['SERVER_NAME'];
         $airline_details = \App\Models\Airlines::where("domain", $domain_name)->get();
