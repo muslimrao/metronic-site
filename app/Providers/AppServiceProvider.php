@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Helpers\GeneralHelper;
 use App\Http\Library\CustomValidator;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Contracts\Session\Session;
@@ -38,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         
         if ( $airline_details -> count() <= 0  )
         {
-            //abort(404);
+            GeneralHelper::show_error_page("401");
         }
         else {
          
