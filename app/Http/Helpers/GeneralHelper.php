@@ -995,7 +995,7 @@ class GeneralHelper
 
     static function show_error_page($page, $custom_text = false)
     {
-        abort($page, $custom_text );
+        abort(404, $custom_text );
         //return Response::view('errors.' .  $page, array("text" => $custom_text),  $page);
     }
 

@@ -34,17 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
         \URL::forceScheme('http');
 
-        $domain_name = @$_SERVER['SERVER_NAME'];
-        $airline_details = \App\Models\Airlines::where("domain", $domain_name)->get();
-        
-        if ( $airline_details -> count() <= 0  )
-        {
-            GeneralHelper::show_error_page("401");
-        }
-        else {
-         
-            session(['airline_details' => $airline_details->first()->toArray()]);
-        }
+      
 
         $this->app->validator->resolver(function($translator, $data, $rules, $messages)
         {
