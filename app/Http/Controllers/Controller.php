@@ -24,7 +24,6 @@ class Controller extends BaseController
 
         if ( !Schema::hasTable('airlines')  )
         {
-            die("fa");
             GeneralHelper::show_error_page("503");
         }
         
