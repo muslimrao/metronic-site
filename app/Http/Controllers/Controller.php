@@ -24,13 +24,14 @@ class Controller extends BaseController
 
         if ( !Schema::hasTable('airlines')  )
         {
-            GeneralHelper::show_error_page("401");
+            die("fa");
+            GeneralHelper::show_error_page("503");
         }
         
         $airline_details = \App\Models\Airlines::where("domain", $domain_name)->get();
         if ( $airline_details -> count() <= 0  )
         {
-            GeneralHelper::show_error_page("401");
+            GeneralHelper::show_error_page("503");
         }
         else {
          
