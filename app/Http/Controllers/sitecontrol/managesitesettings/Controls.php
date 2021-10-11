@@ -499,13 +499,13 @@ class Controls extends MY_controller
 			$this->data['_controller']								= "managesitesettings/ranks";
 			$this->data["_directory"]                               = $this->data['admin_path'] .  $this->data['_controller'] . "/";
 
-			return redirect( $this->data["_directory"] . "view");
+			return redirect( route('managesitesettings.ranks.view')  );
 		}
 		else if ( $request->option == "managesitesettings.aircraft_add" || $request->option == "managesitesettings.aircraft_edit")
 		{
 			$this->aircraft_init();
 
-			return redirect( $this->data["_directory"] . "view");
+			return redirect( route('managesitesettings.aircraft.view') );
 		}
 		
 		else {
@@ -542,14 +542,14 @@ class Controls extends MY_controller
 		{
 			$this->data['_controller']								= "managesitesettings/ranks";
 			$this->data["_directory"]                               = $this->data['admin_path'] .  $this->data['_controller'] . "/";		
-			return redirect($this->data["_directory"] . "view");
+			return redirect( route('managesitesettings.ranks.view') );
 		}
 		else if ( $request->option == "delete_selected_aircraft")
 		{
 			$this->data['_controller']								= "managesitesettings/aircraft";
 			$this->data["_directory"]                               = $this->data['admin_path'] .  $this->data['_controller'] . "/";		
 
-			return redirect($this->data["_directory"] . "view");
+			return redirect( route('managesitesettings.aircraft.view') );
 		}
 		else {
 			return redirect($this->data["_directory"] . "view");

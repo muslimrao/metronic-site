@@ -27,21 +27,11 @@ use App\Http\Controllers\sitecontrol\Managerolespermissions\Controls as ManageRo
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::group(  ['middleware' => [ 'web'] ]   , function () {
-    Route::match(['get'], '/', [
-        Site_Home::class,
-        'index',
-    ]);	
-});
 
 
 
-Route::group(['middleware' => ['guest', 'web'], 'prefix' => 'sitecontrol', 'namespace' => \Config::get('constants.SITECONTROL_FOLDER')], function () {
+
+Route::group(['middleware' => ['guest', 'web'], 'prefix' => '', 'namespace' => \Config::get('constants.SITECONTROL_FOLDER')], function () {
 
     #LOGIN
     Route::match(['get', 'post'], '/', [
@@ -86,13 +76,20 @@ Route::group(['middleware' => ['guest', 'web'], 'prefix' => 'sitecontrol', 'name
 Route::group(['middleware' => ['web', 'verifyrolepermissions']], function () {
 
     #DASHBOARD
-    Route::match(['get', 'post'], '/dashboard', [
+    Route::match(['get'], '/', [
         Dashboard::class,
         "view",
     ])->name('dashboard.view');
     #DASHBOARD
 
-
+    /*
+    #DASHBOARD
+    Route::match(['get', 'post'], '/dashboard', [
+        Dashboard::class,
+        "view",
+    ])->name('dashboard.view');
+    #DASHBOARD
+    */
 
     #ABOUT US
     Route::match(['get', 'post'], '/about-us', [
@@ -115,7 +112,7 @@ Route::group(['middleware' => ['web', 'verifyrolepermissions']], function () {
 
 
 // Sitecontrol Auth Route
-Route::group(['middleware' => ['domain.user', 'verifyrolepermissions'], 'namespace' => 'sitecontrol', 'prefix' => 'sitecontrol'], function () {
+Route::group(['middleware' => ['domain.user', 'verifyrolepermissions'], 'namespace' => 'sitecontrol', 'prefix' => ''], function () {
 
     Route::get('/clear', function () {
         $exitCode = '';
@@ -156,7 +153,7 @@ Route::group(['middleware' => ['domain.user', 'verifyrolepermissions'], 'namespa
         Route::match(['get'], '/edit/{id}', [
             ManageRolesPermissions::class,
             'edit',
-        ]);
+        ])->name("managerolespermissions.edit");
 
 
 
@@ -170,7 +167,7 @@ Route::group(['middleware' => ['domain.user', 'verifyrolepermissions'], 'namespa
         Route::match( ['get', 'post'], '/options', [
             ManageRolesPermissions::class,
             'options',
-        ])->middleware(['middleware' => 'verifypost:managerolespermissions.view']);
+        ])->name("managerolespermissions.options")->middleware(['middleware' => 'verifypost:managerolespermissions.view']);
 
 
        
@@ -327,9 +324,7 @@ Route::group(['middleware' => ['domain.user', 'verifyrolepermissions'], 'namespa
         Route::match(['get'], '/edit/{id}', [
             ManagePilots::class,
             'edit',
-        ])->name('managepilots.edit');;
-
-
+        ])->name('managepilots.edit');
 
         
         Route::match(['get', 'post'], '/add', [

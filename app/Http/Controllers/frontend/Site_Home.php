@@ -24,14 +24,16 @@ class Site_Home extends  MY_controller{
 	
 		
         $this->data['_pagetitle']                 = "Home";
-
+		
+		
+	
 	}
 
 	function index()
 	{
 
 		
-		
+		return redirect(route('dashboard.view'));
 		
 		$this->data['_pageview']									=  $this->data["frontend_path"] . "home";	
 		

@@ -91,12 +91,22 @@ class Pilots extends Authenticatable
 
     public function getRankNameAttribute()
     {
-        return $this->rank->rank_name;
+        if ( $this->rank != null )
+        {
+            return $this->rank->rank_name;
+        }
+        
+        return '';
     }
 
     public function getHubNameAttribute()
     {
-        return $this->hub->hub_name;
+        if ( $this->hub != null)
+        {
+            return $this->hub->hub_name;
+        }
+        
+        return '';
     }
 
 

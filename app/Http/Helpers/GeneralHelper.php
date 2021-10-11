@@ -176,7 +176,6 @@ class GeneralHelper
     {
         $local_ips         = array('127.0.0.1', '192.168.14.8', 'localhost', 'genetech002', '192.168.14.114', '192.168.11.1', '192.168.14.128', '192.168.14.135', '::1');
 
-
         if (in_array($_SERVER['REMOTE_ADDR'], $local_ips)) {
             return TRUE;
         } elseif (in_array($_SERVER['HTTP_HOST'], ["192.168.14.8:81"])) {

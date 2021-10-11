@@ -9,7 +9,7 @@ $attributes = array(
 {!! 
 Form::open(
     array(
-    "url" => $_directory.'save',
+    "url" => route('manageflightshistory.save'),
     "method" => "post",
     "enctype" => "multipart/form-data",
     )
@@ -72,7 +72,7 @@ Form::open(
                                         <div class="form-group row fv-plugins-icon-container mb-6">
 
                                             {!! Form::label('aircraft_id', 'Aircraft', array('class' => '
-                                            col-xl-3 col-lg-3 col-form-label')) !!}
+                                                required col-xl-3 col-lg-3 col-form-label')) !!}
                                             <div class="col-lg-9 col-xl-9">
 
                                                 {!! Form::select('aircraft_id',
@@ -291,7 +291,7 @@ Form::open(
 
                             
                                 <div class="mr-2">
-                                    {!! Html::link($_directory . "view", 'Cancel', array('class' => 'btn btn btn-light font-weight-bolder text-uppercase px-9 py-4')) !!}
+                                    {!! Html::link( route('manageflightshistory.view') , 'Cancel', array('class' => 'btn btn btn-light font-weight-bolder text-uppercase px-9 py-4')) !!}
                                 </div>
                                 <div>
                                     {!! Form::save( $_directory ) !!}                                

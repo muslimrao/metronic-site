@@ -10,7 +10,7 @@
 
     {!! Form::open(
     array(
-    "url" => $_directory.'options',
+    "url" => route("managerolespermissions.options"),
     "method" => "post",
     "enctype" => "multipart/form-data",
     "id" => "datatable_form"
@@ -126,22 +126,8 @@
 
 
 
-                    <a href="{{ url( $_directory . 'add' )  }}">
-                        <button type="button" class="btn btn-primary " >
+                    {!! Form::add( url( route('managerolespermissions.add') ), $_controller, $_heading ) !!}
 
-
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
-                                        transform="rotate(-90 11.364 20.364)" fill="black" />
-                                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                                </svg>
-                            </span>
-                            Add {{$_heading}}
-
-                        </button>
-                    </a>
 
 
                 </div>
@@ -317,17 +303,8 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                 data-kt-menu="true">
 
-                                <div class="menu-item px-3">
-                                    <a href="{{ url( $_directory . 'edit/' . $result->pilot_role_id )  }}"
-                                        class="menu-link px-3 submit_btn_form">
-                                        Edit
-                                    </a>
-                                </div>
-
-
-                                <div class="menu-item px-3"> 
-                                <a href="javascript:;" class="menu-link px-3 submit_btn_form" data-operation="delete" >Delete</a>
-                                </div>
+                                {!! Form::edit(  url( route('managerolespermissions.edit', array("id"   => $result->pilot_role_id)) ) , $_controller ) !!} 
+                                {!! Form::delete_single( $_controller ) !!} 
 
                             </div>
 
@@ -350,8 +327,4 @@
     {!! Form::close() !!}
 
 
-
-    <!-- Modal Form  -->
-    @include( "sitecontrol.template.modal.index", array( "_modal_form_file" => $_directory . "edit", "_modal_form_id" =>
-    "pilotForm", "_modal_form_url" => $_directory . "save" ))
 </div>

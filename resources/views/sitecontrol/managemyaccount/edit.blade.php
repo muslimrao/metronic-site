@@ -20,7 +20,7 @@
 
         <div id="kt_account_profile_details" class="collapse show">
 
-            {!! Form::open( array("url" => $_directory . "save", "method" => "post", "enctype" => "multipart/form-data",
+            {!! Form::open( array("url" => route('managemyaccount.save'), "method" => "post", "enctype" => "multipart/form-data",
             "id" => "kt_account_profile_details_form", "class" => "form") ) !!}
 
             {!! Form::unique_formid( ) !!}
@@ -225,7 +225,7 @@
 
                     <div id="kt_signin_email_edit" class="flex-row-fluid d-none">
 
-                        {!! Form::open( array("url" => $_directory . "save", "method" => "post", "enctype" =>
+                        {!! Form::open( array("url" => route('managemyaccount.save'), "method" => "post", "enctype" =>
                         "multipart/form-data",
                         "id" => "kt_signin_change_email", "class" => "form") ) !!}
 
@@ -290,7 +290,7 @@
 
                     <div id="kt_signin_password_edit" class="flex-row-fluid d-none">
 
-                        {!! Form::open( array("url" => $_directory . "save", "method" => "post", "enctype" =>
+                        {!! Form::open( array("url" => route('managemyaccount.save'), "method" => "post", "enctype" =>
                         "multipart/form-data",
                         "id" => "kt_signin_change_password", "class" => "form") ) !!}
 
@@ -355,7 +355,7 @@
     </div>
 
 
-    {!! Form::open( array("url" => $_directory . "save", "method" => "post", "enctype" =>
+    {!! Form::open( array("url" => route('managemyaccount.save'), "method" => "post", "enctype" =>
     "multipart/form-data",
     "id" => "", "class" => "form") ) !!}
 

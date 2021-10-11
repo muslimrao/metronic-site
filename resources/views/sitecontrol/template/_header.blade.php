@@ -81,7 +81,7 @@
                                 @if ( RoleManagement::if_Allowed( 'managepilots', 'view' ) )
                                 <div class="menu-item ">
                                     <a class="menu-link py-3"
-                                        href="{!! URL::to( $admin_path . 'managepilots/view') !!}">
+                                        href="{!! URL::to( route('managepilots.view') ) !!}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -94,7 +94,7 @@
                                 @if ( RoleManagement::if_Allowed( 'manageflightshistory', 'view' ) )
                                 <div class="menu-item">
                                     <a class="menu-link py-3"
-                                        href="{!! URL::to( $admin_path . 'manageflightshistory/view') !!}">
+                                        href="{!! URL::to( route('manageflightshistory.view') )  !!}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -2776,7 +2776,11 @@
                              
                          </div>
                          
-                         @endif
+                         @else
+
+                         <a class="btn btn-sm btn-primary" href="{{ route('domainuser.login') }}">Login</a>
+
+                         @endif   
                          
                      </div>
                      

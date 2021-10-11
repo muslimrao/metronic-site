@@ -22,7 +22,7 @@ class SignupController extends MY_controller
         $this->data                               = $this->default_data();
         $this->data['_pagepath']                  = $this->data['admin_path'] . "/auth/create";
 
-        $this->data['_headingtitle']              = "Please Login ";
+        $this->data['_headingtitle']              = "Create an Account ";
         $this->data['_pagetitle']                 = $this->data['_headingtitle'] . " - ";
         
       

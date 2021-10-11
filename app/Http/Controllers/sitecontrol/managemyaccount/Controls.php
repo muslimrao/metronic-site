@@ -438,46 +438,6 @@ class Controls extends MY_controller
 		return redirect( $this->data["_directory"] . "edit/" . Auth::guard(  RoleManagement::get_current_user_logged_in_GUARD() )->ID() ) ;
 	}
 
-	/*
-	public function options( Request $request )
-    {
-
-		$is_post				= FALSE;
-
-		if ( isset($request['checkbox_options']) )
-		{
-				if (count($request['checkbox_options']) > 0 )
-				{
-						$is_post		= TRUE;
-				}
-		}
-
-
-		if ($is_post)
-		{
-			switch ($request['options'])
-			{
-
-				case "delete";
-						return $this->delete( $request['checkbox_options'] );
-						break;
-
-
-				default:
-						$this->data['_messageBundle']								= $this->_messageBundle( 'danger' , "Invalid Operation", 'Error!', true);
-						return redirect( $this->data["_directory"] . "controls/view" );
-						break;
-
-			}
-		}
-		else
-		{
-			$this->data['_messageBundle']								= $this->_messageBundle( 'danger' , "Invalid Operation", 'Error!', true);
-			return redirect( $this->data["_directory"] . "controls/view" );
-		}
-
-    }
-	*/
-
+	
 
 }

@@ -19,6 +19,9 @@ class FormMacrosServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+   
+
+
         Form::macro('unique_formid', function () {
             return Form::hidden('unique_formid', GeneralHelper::set_value("unique_formid", Str::random(40)) );
         });
@@ -30,7 +33,9 @@ class FormMacrosServiceProvider extends ServiceProvider
         
         Form::macro('add', function ( $url, $_controller, $_heading = FALSE ) {
             
-         
+
+            #$url = str_replace("/sitecontrol", "",  $url);
+
             if ( RoleManagement::if_Allowed( $_controller, 'add' ) )
             {
 
@@ -62,6 +67,8 @@ class FormMacrosServiceProvider extends ServiceProvider
         
         Form::macro('edit', function ( $url, $_controller) {
             
+            #$url = str_replace("/sitecontrol", "",  $url);
+
             if ( RoleManagement::if_Allowed( $_controller, 'edit' ) )
             {
                 return '<div class="menu-item px-3">

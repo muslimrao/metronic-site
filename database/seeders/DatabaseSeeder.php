@@ -366,6 +366,46 @@ class DatabaseSeeder extends Seeder
 
 
 
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => 'dashboard',
+            'operation'                 => 'view',
+            ],
+
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => 'about-us',
+            'operation'                 => 'view',
+            ],
+
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => 'pilot/view',
+            'operation'                 => 'view',
+            ],
+
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => 'managepilots',
+            'operation'                 => 'view',
+            ],
+
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => 'manageflightshistory',
+            'operation'                 => 'view',
+            ],
+
+            [
+            'pilot_role_id'              => 4,
+            'directory'                 => '/',
+            'operation'                 => 'redirect_after_login',
+            ],
+
+
+
+
+
 
 
 

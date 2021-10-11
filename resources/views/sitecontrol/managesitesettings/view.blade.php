@@ -3,7 +3,7 @@
 {!! 
 Form::open(
     array(
-    "url" => $_directory.'save',
+    "url" => route('managesitesettings.save'),
     "method" => "post",
     "enctype" => "multipart/form-data",
     )

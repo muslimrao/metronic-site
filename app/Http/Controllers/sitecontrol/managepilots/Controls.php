@@ -101,132 +101,10 @@ class Controls extends MY_controller
 
 
 		return view($this->constants["ADMINCMS_TEMPLATE_VIEW"], $this->data);
-		/*
-		if ($request->draw) {
-
-			$datatables						= DataTables::eloquent($this->data["table_record"])
-
-				->addColumn('id', function ($v) {
-
-					return Form::checkbox('checkbox_options[]', $v->id, false, ['class' => '']);
-				})
-				->editColumn('sort', function ($v) {
-
-					return Form::text('sort['. $v->id .']', $v->sort, ['class' => '', "style" => "width:70px;"]);
-				})
-				->addColumn('action', function ($v) {
-
-					return Form::edit($this->data['_directory'], $v->id); 
-				});
-			return $datatables->make(true);
-		} else {
-
-
-
-			$html	= $htmlBuilder
-				->addColumn(['data' => 'id', 'name' => 'id', 'title' => " " . Form::checkbox('select_all', '', false, array('class' => 'flat-red')), 'style' => "width:10px", "searchable" => false, "orderable" => false])
-				->addColumn(['data' => 'title', 'name' => 'title', 'title' => trans("general_lang.label_txt_title"), "style" => "width:20%;"])
-				->addColumn(['data' => 'description', 'name' => 'description', 'title' => trans("general_lang.label_txt_description")])
-				->addColumn(['data' => 'sort', 'name' => 'sort', 'title' => trans("general_lang.label_txt_sort"), 'style' => "width:40px"])
-				->addColumn(['data' => 'action', 'name' => 'action', 'title' => trans("general_lang.label_txt_action"), "searchable" => false, "orderable" => false, 'style' => "width:10px"]);
-
-			$html->setTableAttributes(['class' => "table table-bordered table-striped", "id" => "tbl_records_serverside"]);
-
-			$html->ajax(url("sitecontrol/managepilots/" . $view_filter));
-
-			$html->parameters([
-				"lengthMenu"			=> json_decode($this->data['dataTableLENGTH_PARENT']),
-				'dom'	                => $this->data['dataTableDOM_PARENT'],
-				'order'	 				=> array(1, "desc"),
-
-				'fnPreDrawCallback'			=> "function(){
-
-					//datatable_block_ui('show');				
-
-				}",
-
-				'drawCallback'		=> "function( settings ){
-					
-					// datatable_block_ui('hide');
-
-					// render_icheckbox();
-					// render_icheckbox_events();
-					// selectize_inputs('selectize_datatable', 'readonly');
-	
-					
-				}",
-
-
-				'initComplete' => "function( settings, json  ){
-					
-									// disableSubmitForm_onDataTableSearch();
-									// dataTableSearchOnEnterKey( 'serverside' );
-
-									// var _self	 = this;
-
-									// this.api().columns().every(function ( i, f ) {
-
-									// 	var column = this;
-
-									// });
-
-
-							}",
-
-
-			]);
-
-			$this->data['html']				= $html;
-
-			return view($this->constants["ADMINCMS_TEMPLATE_VIEW"], $this->data);
-		}*/
+		
 	}
 
 
-
-	// public function pilot_details(Request $request, Builder $htmlBuilder,  $pilot_id = FALSE)
-	// {
-
-		
-	
-	// 	$_records											= Pilots::where("id", $pilot_id)->where("airline_id", get_airline_ID() );
-
-	// 	if ($_records->count() <= 0) {
-	// 		return GeneralHelper::show_error_page("404");
-	// 	}
-
-
-	// 	$this->data["breadcrumbs_list"]							= array(
-
-	// 		"page_title"		=> $this->data["_heading"] = "Account Overview",
-	// 		"links_list"		=> array(
-
-	// 			[
-	// 				"name"		=> "Home",
-	// 				"url"		=> url('/')
-	// 			],
-	// 			[
-	// 				"name"		=> $this->data["_heading"],
-	// 			]
-	// 		)
-
-	// 	);
-
-
-
-		
-
-	// 	$this->data['pilot_details']        					= $_records->get()->first();
-	// 	$this->data['favorite_aircrafts']						= $this->data['pilot_details']->favorite_aircrafts()->get();
- 
-	// 	$this->data['table_record']          					= FlightHistory::where("pilot_id", $pilot_id);
-
-
-	// 	$this->data['_pageview'] 								= $this->data["_directory"] . "pilot_details";
-
-	// 	return view($this->constants["ADMINCMS_TEMPLATE_VIEW"], $this->data);
-		
-	// }
 
 	/**
 	 * View Details of records function
@@ -279,7 +157,7 @@ class Controls extends MY_controller
 		}
 
 		$this->data['_messageBundle']		    = $this->_messageBundle(' alert-success alert', trans("general_lang.operation_delete_success"), trans("general_lang.heading_operation_success"), false, true);
-		return redirect($this->data["_directory"] . "view");
+		return redirect( route("managepilots.view") );
 	}
 
 	/**
@@ -548,7 +426,7 @@ class Controls extends MY_controller
 			$this->data['_messageBundle']		    = $this->_messageBundle(' alert-success alert', trans("general_lang.operation_saved_success"), trans("general_lang.heading_operation_success"), false, true);
 		}
 
-		return redirect($this->data["_directory"] . "view");
+		return redirect( route("managepilots.view") );
 	}
 
 
@@ -622,7 +500,7 @@ class Controls extends MY_controller
 			
 		
 			$this->_messageBundle('danger', $ex->getMessage(), '', FALSE, TRUE);
-			return redirect($this->data["_directory"] . "view");
+			return redirect(  route("managepilots.view") );
 
 			
 		}

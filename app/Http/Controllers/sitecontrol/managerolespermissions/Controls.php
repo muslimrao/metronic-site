@@ -191,51 +191,6 @@ class Controls extends MY_controller
 	}
 
 
-
-	// public function pilot_details(Request $request, Builder $htmlBuilder,  $pilot_id = FALSE)
-	// {
-
-		
-	
-	// 	$_records											= Pilots::where("id", $pilot_id)->where("airline_id", get_airline_ID() );
-
-	// 	if ($_records->count() <= 0) {
-	// 		return GeneralHelper::show_error_page("404");
-	// 	}
-
-
-	// 	$this->data["breadcrumbs_list"]							= array(
-
-	// 		"page_title"		=> $this->data["_heading"] = "Account Overview",
-	// 		"links_list"		=> array(
-
-	// 			[
-	// 				"name"		=> "Home",
-	// 				"url"		=> url('/')
-	// 			],
-	// 			[
-	// 				"name"		=> $this->data["_heading"],
-	// 			]
-	// 		)
-
-	// 	);
-
-
-
-		
-
-	// 	$this->data['pilot_details']        					= $_records->get()->first();
-	// 	$this->data['favorite_aircrafts']						= $this->data['pilot_details']->favorite_aircrafts()->get();
- 
-	// 	$this->data['table_record']          					= FlightHistory::where("pilot_id", $pilot_id);
-
-
-	// 	$this->data['_pageview'] 								= $this->data["_directory"] . "pilot_details";
-
-	// 	return view($this->constants["ADMINCMS_TEMPLATE_VIEW"], $this->data);
-		
-	// }
-
 	/**
 	 * View Details of records function
 	 *
@@ -287,7 +242,7 @@ class Controls extends MY_controller
 		}
 
 		$this->data['_messageBundle']		    = $this->_messageBundle(' alert-success alert', trans("general_lang.operation_delete_success"), trans("general_lang.heading_operation_success"), false, true);
-		return redirect($this->data["_directory"] . "view");
+		return redirect( route( "managerolespermissions.view"  ));
 	}
 
 	/**
@@ -525,7 +480,7 @@ class Controls extends MY_controller
 			$this->data['_messageBundle']		    = $this->_messageBundle(' alert-success alert', trans("general_lang.operation_saved_success"), trans("general_lang.heading_operation_success"), false, true);
 		}
 
-		return redirect($this->data["_directory"] . "edit/" . $request->pilot_role_id);
+		return redirect( route("managerolespermissions.edit", array("id"	=> $request->pilot_role_id))  );
 	}
 
 
@@ -636,7 +591,7 @@ class Controls extends MY_controller
 			
 		
 			$this->_messageBundle('danger', $ex->getMessage(), '', FALSE, TRUE);
-			return redirect($this->data["_directory"] . "view");
+			return redirect( "managerolespermissions.view" );
 
 			
 		}

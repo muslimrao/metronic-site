@@ -53,7 +53,7 @@ class MY_controller extends Controller
         $data["admin_path"]                                             = \Config::get('constants.SITECONTROL_FOLDER') . "/";
         $data["frontend_path"]                                          = \Config::get('constants.FRONTEND_FOLDER') . "/";
 
-        $data["_directory"]                                             = "";
+        $data["_directory"]                                             = ""; #\Config::get('constants.SITECONTROL_FOLDER') . "/";
         $data["_controller"]                                            = "";
         
         $data["_heading"]                                               = "";

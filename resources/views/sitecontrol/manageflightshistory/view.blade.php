@@ -10,7 +10,7 @@
 
     {!! Form::open(
     array(
-    "url" => $_directory.'options',
+    "url" => route('manageflightshistory.options'),
     "method" => "post",
     "enctype" => "multipart/form-data",
     "id" => "datatable_form"
@@ -125,7 +125,7 @@
                             Export</button> -->
 
                     
-                    {!! Form::add( url($_directory . 'controls/add'), $_controller, $_heading ) !!}
+                    {!! Form::add( route("manageflightshistory.add") , $_controller, $_heading ) !!}
 
 
 
@@ -324,7 +324,7 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                 data-kt-menu="true">
 
-                                {!! Form::edit(  url( $_directory . 'edit/' . $result->id ), $_controller ) !!} 
+                                {!! Form::edit(  url( route("manageflightshistory.edit", array("id" => $result->id)) ), $_controller ) !!} 
                                 {!! Form::delete_single( $_controller ) !!} 
 
 
@@ -349,9 +349,4 @@
 
     {!! Form::close() !!}
 
-
-
-    <!-- Modal Form  -->
-    @include( "sitecontrol.template.modal.index", array( "_modal_form_file" => $_directory . "edit", "_modal_form_id" =>
-    "pilotForm", "_modal_form_url" => $_directory . "save" ))
 </div>

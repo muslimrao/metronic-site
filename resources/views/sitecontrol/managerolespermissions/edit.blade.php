@@ -9,7 +9,7 @@ $attributes = array(
 {!! 
 Form::open(
     array(
-    "url" => $_directory.'save',
+    "url" => route("managerolespermissions.save"),
     "method" => "post",
     "enctype" => "multipart/form-data",
     )
@@ -193,7 +193,7 @@ Form::open(
 
                             
                                 <div class="mr-2">
-                                    {!! Html::link($_directory . "view", 'Cancel', array('class' => 'btn btn btn-light font-weight-bolder text-uppercase px-9 py-4')) !!}
+                                    {!! Html::link( route( "managerolespermissions.view" ), 'Cancel', array('class' => 'btn btn btn-light font-weight-bolder text-uppercase px-9 py-4')) !!}
                                 </div>
                                 <div>
                                     {!! Form::save( $_directory ) !!}                                

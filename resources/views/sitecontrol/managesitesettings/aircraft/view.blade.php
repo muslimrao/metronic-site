@@ -3,7 +3,7 @@
 {!!
 Form::open(
 array(
-"url" => $_root_dir.'options',
+"url" => route('managesitesettings.options'),
 "method" => "post",
 "enctype" => "multipart/form-data",
 )
@@ -37,7 +37,7 @@ array(
 
             <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
 
-               {!! Form::add( url($_directory . 'add'), $_controller, $_heading ) !!}
+               {!! Form::add( route('managesitesettings.aircraft.add') , $_controller, $_heading ) !!}
 
 
 
@@ -130,7 +130,7 @@ array(
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                             data-kt-menu="true">
 
-                            {!! Form::edit(  url( $_directory . 'edit/' . $result->id ), $_controller ) !!} 
+                            {!! Form::edit(  url( route('managesitesettings.aircraft.edit', array("aircraft_id" => $result->id )) ), $_controller ) !!} 
 
                             
                             {!! Form::delete_single( $_controller, 'delete_aircraft' ) !!} 
